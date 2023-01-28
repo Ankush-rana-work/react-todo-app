@@ -17,7 +17,7 @@ const TodoApp = () => {
 
   // add todo's
   const addTodo = () => {
-    if (todoText == "") {
+    if (todoText === "") {
       alert("Please enter the text");
       return false;
     }
@@ -39,7 +39,7 @@ const TodoApp = () => {
   };
 
   const editTodo = (todoId) => {
-    const todoIndex = todoList.findIndex((todo) => todo.id == todoId);
+    const todoIndex = todoList.findIndex((todo) => todo.id === todoId);
     todoList[todoIndex].title = todoText;
     setTodoList([...todoList]);
     setTodoEditId(0);
@@ -47,8 +47,8 @@ const TodoApp = () => {
   };
 
   const changesStatus = (todoId, status) => {
-    const todoIndex = todoList.findIndex((todo) => todo.id == todoId);
-    todoList[todoIndex].status = status == "Pending" ? "Completed" : "Pending";
+    const todoIndex = todoList.findIndex((todo) => todo.id === todoId);
+    todoList[todoIndex].status = status === "Pending" ? "Completed" : "Pending";
     setTodoList([...todoList]);
     setTodoEditId(0);
     setTodoText("");
@@ -58,7 +58,7 @@ const TodoApp = () => {
   const deleteTodo = (todoId) => {
     console.log('eeeecdede');
     const todos = todoList.filter((todo) => {
-      return todo.id != todoId;
+      return todo.id !== todoId;
     });
     setTodoList(todos);
     setTodoEditId(0);
@@ -80,7 +80,7 @@ const TodoApp = () => {
 
   const pendingTodos = useMemo(() => {
     const totalPendingTodos = todoList.filter((todo) => {
-      return todo.status != "Completed";
+      return todo.status !== "Completed";
     });
     return totalPendingTodos;
   }, [todoList]);
